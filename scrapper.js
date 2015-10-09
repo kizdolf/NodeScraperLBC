@@ -4,8 +4,8 @@ var request = require('request'), //get body
 cheerio 	= require('cheerio'), //parse it like Jquery
 nodemailer 	= require('nodemailer'), //send mail
 conf		= require('./conf').conf, //that's you!
-ids 		= {}, //keep track of what's already sended
-
+low			= require('lowdb'), //save results
+db			= low('db.json'),
 transporter = nodemailer.createTransport({
     service: 'Gmail', //you want something else? deal with it.
     auth: conf.gmail
@@ -40,8 +40,8 @@ send_mail = function(apparts){
 suck_this_flat = function(link, price, cb){
  	var href 	= link.attribs.href,
 	id_offre 	= href.split('/')[4].split('.')[0];
-	if(href.indexOf('locations') !== -1 && !ids[id_offre]){
-		ids[id_offre] = 1;
+	if(href.indexOf('locations') !== -1 && !db('offres').find({id: id_offre})){
+		db('offres').push({id: id_offre});
 		var flat = { price: price, href: href, title: link.attribs.title, labels: [], values: [] };
 		request({uri: href, encoding: null}, function(err, resp, body){
 			if(err) return cb(err, false);

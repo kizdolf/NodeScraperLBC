@@ -5,6 +5,7 @@
   "main": "scrapper.js",
   "dependencies": {
     "cheerio": "^0.19.0",
+    "lowdb": "^0.10.2",
     "nodemailer": "^1.8.0",
     "request": "^2.64.0"
   },
