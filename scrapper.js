@@ -40,22 +40,16 @@ send_mail = function(apparts){
 suck_this_flat = function(link, price, cb){
  	var href 	= link.attribs.href,
 	id_offre 	= href.split('/')[4].split('.')[0];
-
 	if(href.indexOf('locations') !== -1 && !ids[id_offre]){
 		ids[id_offre] = 1;
 		var flat = { price: price, href: href, title: link.attribs.title, labels: [], values: [] };
 		request({uri: href, encoding: null}, function(err, resp, body){
 			if(err) return cb(err, false);
 			else{
-				var $ 		= cheerio.load(body),
-				crits 		= $('.criterias'),
-				criteres	= cheerio.load(crits.html()),
-				labels 		= criteres('tr').find('th'),
-				values 		= criteres('tr').find('td');
-
+				var $ = cheerio.load(body), criteres = cheerio.load($('.criterias').html()),
+				labels = criteres('tr').find('th'), values = criteres('tr').find('td');
 				flat.desc 	= $('.content').html();
 				flat.upload = $('.upload_by').html().split('</a>')[1].split('-')[1];
-
 				labels.each(function(i, label){ flat.labels.push(label.children[0].data); });
 				values.each(function(i, value){ flat.values.push(value.children[0].data); });
 				return cb(false, flat);
