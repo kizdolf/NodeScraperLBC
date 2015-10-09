@@ -41,6 +41,7 @@ suck_this_flat = function(link, price, cb){
  	var href = link.attribs.href;
 	var id_offre = href.split('/')[4].split('.')[0];
 	if(href.indexOf('locations') !== -1 && !ids[id_offre]){
+		ids[id_offre] = 1;
 		var flat = {};
 		request({uri: href, encoding: null}, function(err, resp, body){
 			if(err){
