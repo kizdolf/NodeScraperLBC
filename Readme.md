@@ -1,7 +1,8 @@
 ## Scrapper le bon coin. 
 > En nodeJS, sans databases.
 -------
- 1) Install : 
+
+1) Install : 
  	* npm install
  	* npm install -g forever
 
