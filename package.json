@@ -1,0 +1,13 @@
+{
+  "name": "scrapperleboncoin",
+  "version": "1.0.0",
+  "description": "scrapper pour le bon coin. envoie un mail avec les nouvelles offres.",
+  "main": "scrapper.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "nodemailer": "^1.8.0",
+    "request": "^2.64.0"
+  },
+  "author": "jburet",
+  "license": "ISC"
+}
