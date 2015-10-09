@@ -31,7 +31,10 @@ send_mail = function(apparts){
 	    to: conf.gmail.user, //to you
 	    subject: apparts.length + plural + ' à regarder!',
 	    html: html
-	}, function(error){ if(error) console.log(error); });
+	}, function(error, info){
+		if(error) console.log(error);
+		else console.log('Message sent: ' + info.response + ' à ' + new Date());
+	});
 },
 
 suck_this_flat = function(link, price, cb){
@@ -64,12 +67,12 @@ suck_this_flat = function(link, price, cb){
 scrap = function(){
 	request({uri: conf.url_offres}, function(error, response, body) {
 		if (!error){
-			var apparts = [],
-			prix 		= [],
+			var apparts = [], prix = [],
 			list 		= cheerio.load(body)('.list-lbc'),
 			links 		= list.find('a'), //get links
 			prices 		= list.find('.price'), //get prices
 			count 		= links.length;
+
 			prices.each(function(i, price){ prix.push(price.children[0].data.trim()); });
 			links.each(function(i, link){
 				suck_this_flat(link, prix[i], function(err, flat){
