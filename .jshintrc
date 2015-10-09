@@ -1,0 +1,24 @@
+{
+  "undef": true,
+  "unused": true,
+  "globalstrict" : false,
+  "node" : true,
+  "predef": [
+    "require",
+    "module",
+    "angular",
+    "exports",
+    "__dirname",
+    "process",
+    "$",
+    "jQuery",
+    "global",
+    "console",
+    "window",
+    "describe",
+    "it",
+    "app",
+    "Chart",
+    "document",
+    "location"]
+}
