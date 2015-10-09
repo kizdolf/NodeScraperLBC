@@ -14,15 +14,16 @@ send_mail = function(apparts){
 	var plural = (apparts.length > 1) ? ' appartements' : ' appartement', //funk. or Useless?
 	html = "<ul>";
 	apparts.forEach(function(one){
-		html += '<li><span style="line-height:24px; font-size:18px;">' + one.price + ' : <a href="' + one.href + '">' +  one.title + '</a></span>';
+		html += '<li><span style="line-height:24px; font-size:18px;">' + one.price + ' : <a href="' + one.href + '">' +  one.title + '</a><small>  -- (' + one.upload + ')</small></span>';
 		if(one.labels){
-			html += '<small><ul>';
+			html += '<small><ul style="width:30%; flaot:left;">';
 			one.labels.forEach(function(l, i){
 				l = l.replace(new RegExp('�', 'g'), 'é'); //jshint ignore:line
 				html+= '<li>' + l + one.values[i] + '</li>';
 			});
 			html += '</ul></small>';
 		}
+		html += '<hr style="clear:both">';
 		html += '</li><br>';
 	});
 	html += '</ul>';
@@ -56,6 +57,7 @@ suck_this_flat = function(link, price, cb){
 				var $ = cheerio.load(body);
 				var crits = $('.criterias');
 				flat.desc = $('.content').html();
+				flat.upload = $('.upload_by').html().split('</a>')[1].split('-')[1];
 				if(crits.html() !== null){
 					var criteres = cheerio.load(crits.html());
 					var labels = criteres('tr').find('th');
