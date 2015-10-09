@@ -1,8 +1,8 @@
-## Scrapper le bon coin. 
+## Scrapper le bon coin.
 > En nodeJS, sans databases.
 -------
 
-1) Install : 
+1) Install :
 
 * npm install
 
@@ -10,7 +10,7 @@
 
 2) Params:
 
-* Edit scrapper.js: var conf.
+* Edit conf.js
 
 3) Launch:
 ```
