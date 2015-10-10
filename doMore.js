@@ -18,4 +18,6 @@ exports.doSomethingWithApparts = function (apparts, from){
 		from pap there is no zipcode yet.
 		labels[i] as the values[i] value. 
 	*/
+	console.log('from ' + from + ' : ');
+	console.log(apparts);
 };
