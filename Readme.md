@@ -23,3 +23,23 @@ Cependant comme je suis encore en train de dev tout ça un mail est envoyé pour
 ####3) Launch:
 
 * forever start scrapper.js
+
+-----
+
+## Ajouter un scrapper ? 
+
+**1)** Ajouter le nom et les urls associés dans conf.js, objet urls, le nom donné servira de référence
+**2)** Ajouter un fichier dans le dossier scrappers. Le fichier DOIT avoir le même nom que dans conf.js
+**3)** Le fichier doit avoir une méthode scrap exporté, qui sera appelé comme callback de request. 
+Prototype de la fonction scrap: function(err, resp, body). Le retour n'est pas observé. 
+Pour envoyer les offres par mail appeler la fonction send_mail de scrapper.js avec les arguments suivants: 
+```
+apparts: [{
+	price: string,
+	href: string, // url pour accéder à l'offre 
+	title: string, // valeur du lien
+	upload: false || string, // si string sera affiché en plus du lien
+	labels: [strings], //labels des infos à afficher
+	values: [strings], //values des infos à afficher. labels et values DOIVENT avoir les même index. 
+},...]
+```

@@ -3,7 +3,7 @@ var main_scrapper 	= require('./../scrapper'),
 db					= require('lowdb')('db.json'),
 request 			= require('request'),
 cheerio 			= require('cheerio'), //parse it like Jquery
-iconv 				= require('iconv-lite');
+iconv 				= require('iconv-lite'); //because shitty encoding.
 
 exports.scrap = function(err, resp, body){
 	if(err) return false;
