@@ -4,7 +4,7 @@ var request = require('request'), //get body
 nodemailer 	= require('nodemailer'), //send mail
 conf		= require('./conf').conf, //that's you!
 _			= require('lodash'),
-more		= require('./doMore')
+more		= require('./doMore'),
 transporter = nodemailer.createTransport({
     service: 'Gmail', //you want something else? deal with it.
     auth: conf.gmail
