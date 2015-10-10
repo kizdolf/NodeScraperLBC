@@ -45,4 +45,4 @@ var scrap = function(){
 
 //	start srcapping.
 scrap();
-// setInterval(function(){	scrap();}, conf.sec * 1000);
+setInterval(function(){	scrap();}, conf.sec * 1000);
