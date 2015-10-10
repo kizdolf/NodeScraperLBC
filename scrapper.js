@@ -4,12 +4,14 @@ var request = require('request'), //get body
 nodemailer 	= require('nodemailer'), //send mail
 conf		= require('./conf').conf, //that's you!
 _			= require('lodash'),
+more		=require('doMore')
 transporter = nodemailer.createTransport({
     service: 'Gmail', //you want something else? deal with it.
     auth: conf.gmail
 });
 
 exports.send_mail = function(apparts, from){
+	more.doSomethingWithApparts(apparts);
 	var plural = (apparts.length > 1) ? ' appartements' : ' appartement', //funk. or Useless?
 	html = "<ul>";
 	apparts.forEach(function(one){

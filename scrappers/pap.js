@@ -10,14 +10,11 @@ exports.scrap = function(err, resp, body){
 	body = iconv.decode(body, 'iso-8859-1');
 	var apparts = [], prix = [], desc = [], helps = [],
 	$			= cheerio.load(body),
-	list 		= $('.header-annonce'),
-	prices 		= list.find('.prix'),
-	descs		= list.find('.desc'),
-	props		= $('.description').find('ul');
-	 
-	prices.each(function(i, price){ prix.push($(this).html());	});
-	descs.each(function(i, de){ desc.push($(this).html()); });
-	props.each(function(i, prop){
+	list 		= $('.header-annonce');
+
+	list.find('.prix').each(function(i, price){ prix.push($(this).html()); });
+	list.find('.desc').each(function(i, descr){ desc.push($(this).html()); });
+	$('.description').find('ul').each(function(i, prop){
 		var labels = [], values = [];
 		$(this).find('li').each(function(i, li){
 			values.push($(this).html().split('</span>')[1].trim());
@@ -27,11 +24,10 @@ exports.scrap = function(err, resp, body){
 	});
 	list.each(function(i, offer){
 		var refs  = offer.children[0].next.attribs,
-		id = refs.name, href = refs.href,
 		flat = {
 			price: prix[i],
-			id: id,
-			href: 'http://www.pap.fr' + href, 
+			id: refs.name,
+			href: 'http://www.pap.fr' + refs.href, 
 			title: desc[i],
 			upload: false,
 			labels: helps[i].labels,
