@@ -44,4 +44,5 @@ apparts: [{
 	labels: [strings], //labels des infos à afficher
 	values: [strings], //values des infos à afficher. labels et values DOIVENT avoir les même index. 
 },...]
+from : string //utilisé dans l'objet du mail. Pour savoir d'où viennent les offres.
 ```
