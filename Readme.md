@@ -29,7 +29,9 @@ Cependant comme je suis encore en train de dev tout ça un mail est envoyé pour
 ## Ajouter un scrapper ? 
 
 **1)** Ajouter le nom et les urls associés dans conf.js, objet urls, le nom donné servira de référence
+
 **2)** Ajouter un fichier dans le dossier scrappers. Le fichier DOIT avoir le même nom que dans conf.js
+
 **3)** Le fichier doit avoir une méthode scrap exporté, qui sera appelé comme callback de request. 
 Prototype de la fonction scrap: function(err, resp, body). Le retour n'est pas observé. 
 Pour envoyer les offres par mail appeler la fonction send_mail de scrapper.js avec les arguments suivants: 
