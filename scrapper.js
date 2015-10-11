@@ -114,7 +114,7 @@ scrapping.set_mail(true);
 
 //add function triggered before send_mail. 
 //so it's trigger once by scrapper.
-//also it's non-blocking.
+//also it's non-blocking. (meaning you don't need to return anything)
 scrapping.use(function(flats){
 	var obj = {
 		date: new Date(),

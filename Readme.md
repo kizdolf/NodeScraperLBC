@@ -33,10 +33,27 @@ Cependant comme je suis encore en train de dev tout ça un mail est envoyé pour
 **2)** Ajouter un fichier dans le dossier scrappers. Le fichier DOIT avoir le même nom que dans conf.js
 
 **3)** Le fichier doit avoir une méthode scrap exporté, qui sera appelé comme callback de request. 
-Prototype de la fonction scrap: function(err, resp, body). Le retour n'est pas observé. 
-Pour envoyer les offres par mail appeler la fonction send_mail de scrapper.js avec les arguments suivants: 
+Prototype de la fonction scrap: 
 ```
+function(url){
+	return new Promise(function(resolve, reject){
+		...
+		resolve(apartments);
+	});
+}
+```
+les reject sont récupéré et logués (via un console.log, donc dans le fichier généré par forever)
+apartments doit être de la forme:
+pour ne pas récupérer les mêmes offres à chaque fois il est possible de garder en db des infos via lowdb:
+```
+db = require('lowdb')('./dbs/name.json');
+if(!db.find{id: id}){
+	db.push({id; id});
+	apparts.push(appart);
+}
+
 apparts: [{
+	from: string
 	price: string,
 	href: string, // url pour accéder à l'offre 
 	title: string, // valeur du lien
