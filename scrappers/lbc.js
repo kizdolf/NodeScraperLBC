@@ -1,5 +1,5 @@
 'use strict';
-var main_scrapper 	= require('./../scrapper'),
+var 
 db					= require('lowdb')('./dbs/lbc.json'),
 request 			= require('request'),
 cheerio 			= require('cheerio'), //parse it like Jquery
@@ -18,7 +18,7 @@ var suck_this_flat = function(link, price, cb){
 			else{
 				body = iconv.decode(body, 'iso-8859-15');
 				var $ = cheerio.load(body), criteres = cheerio.load($('.criterias').html()),
-				labels = criteres('tr').find('th'), values = criteres('tr').find('td');		
+				labels = criteres('tr').find('th'), values = criteres('tr').find('td');
 				flat.desc 	= $('.content').html();
 				flat.zipcode = $('[itemprop="postalCode"]').html();
 				flat.upload = $('.upload_by').html().split('</a>')[1].split('-')[1];
@@ -50,7 +50,7 @@ exports.scrap = function(url){
 							apparts.push(flat);
 						if(count === 0){
 							fulfill(apparts);
-						} 
+						}
 					});
 				});
 			}

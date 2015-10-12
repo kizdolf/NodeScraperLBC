@@ -43,9 +43,9 @@ function(url){
 }
 ```
 les reject sont récupéré et logués (via un console.log, donc dans le fichier généré par forever)
-apartments doit être de la forme:
-pour ne pas récupérer les mêmes offres à chaque fois il est possible de garder en db des infos via lowdb:
+apartments doit être de la forme suivante.
 ```
+//pour ne pas récupérer les mêmes offres à chaque fois il est possible de garder en db des infos via lowdb:
 db = require('lowdb')('./dbs/name.json');
 if(!db.find{id: id}){
 	db.push({id; id});
