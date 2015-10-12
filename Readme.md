@@ -1,6 +1,10 @@
-## Scrapper le bon coin / pap.
+## Scrapper logements..
 
-check leboncoin et pap pour vous.
+sites scrappés: 
+* leboncoin 
+* pap
+* seloger
+
 En nodeJS, avec une micro-db en JSON.
 
 il est possible de scrapper plusieurs urls chez leboncoin ou pap, rajouter les dans les arrays prévus pour ça. 
