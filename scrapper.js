@@ -76,18 +76,19 @@ var main = function(){
 		if(!scrappers[rank]){
 			return cb(true);
 		}else{
+            var mails = scrappers[rank].mailTo;
 			scrapOne(scrappers[rank], 0, function(done){
-        if(done){
-  				queue.forEach(function(callback){
-  					callback(flats);
-  				});
-  				if(mailer){
-  					if(flats.length > 0)
-  						exports.send_mail(flats, scrappers[rank].mailTo);
-  				}
-  				return scrapOneByOne(scrappers, rank + 1, cb);
-        }else
-          return cb(false);
+                if(done){
+      				queue.forEach(function(callback){
+      					callback(flats);
+      				});
+      				if(mailer){
+      					if(flats.length > 0)
+      						exports.send_mail(flats, mails);
+      				}
+      				return scrapOneByOne(scrappers, rank + 1, cb);
+                }else
+                    return cb(false);
 			});
 		}
 	};
